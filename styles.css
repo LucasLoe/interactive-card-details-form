@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
+:root {
+    --fs: 18px;
+
+    --white: hsl(0, 0%, 100%);
+    --lv: hsl(270, 3%, 87%);
+    --dv: hsl(279, 6%, 55%);
+    --vdv: hsl(278, 68%, 11%);
+    --linGrad: linear-gradient(hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+
+    --border_rad: 5px;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: var(--fs);
+    margin: 0;
+}
+
+main {
+    width: 100%;
+    margin: 0;
+}
+
+#purple-container {
+    content: url(./images/bg-main-mobile.png);
+    width: 100%;
+    height: 240px;
+}
+
+#white-container {
+    padding: 20px;
+    fill: red;
+}
+
+form {
+    border: 1px solid red;
+    width: 100%;
+    max-width: 340px;
+}
+
+form input {
+    height: 40px;
+    border: 1px solid var(--lv);
+    border-radius: var(--border_rad);
+    padding: 0 15px;
+    margin: 5px 0 10px 0;
+    font-size: var(--fs);
+    font-family: 'Space Grotesk';
+    box-sizing: border-box;
+    width: 100%;
+}
+
+form input::placeholder {
+    color: var(--lv);
+}
+
+form label {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--vdv);
+    letter-spacing: 1px;
+}
+
+#expdate-cvc-container {
+    display: flex;
+    width: 100%;
+}
+#expdate-container {
+    width: 50%;
+    min-width: 150px;
+}
+
+#expdate-container div {
+    display: flex;
+}
+
+#cvc-container {
+    width: 50%;
+    margin-left: 10px;
+}
+
+#cvc-container #cvc {
+    box-sizing: border-box;
+
+}
+
+#expdate-container #expdate-mm, #expdate-yy {
+    width: 70px;
+    margin-right: 10px;
+}
+
