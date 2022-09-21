@@ -7,9 +7,13 @@
     --lv: hsl(270, 3%, 87%);
     --dv: hsl(279, 6%, 55%);
     --vdv: hsl(278, 68%, 11%);
+    --err-col: hsl(360, 90%, 47%);
     --linGrad: linear-gradient(hsl(249, 99%, 64%), hsl(278, 94%, 30%));
 
     --border_rad: 5px;
+
+    --img-width: 250px;
+    --scaling-factor: calc(250/447);
 }
 
 body {
@@ -31,7 +35,63 @@ main {
 
 #white-container {
     padding: 20px;
-    fill: red;
+    position: relative;
+    top: -210px;
+}
+
+#credit-card-holder {
+    position: relative;
+    width: 100%;
+    height: calc( (var(--img-width) / 447) * 245 * 1.5 + 20px);
+    max-width: calc(1.5 * var(--img-width));
+}
+
+#credit-card-holder img {
+    max-width: var(--img-width)
+}
+
+#credit-card-holder img:first-child {
+    position: relative;
+    left: calc(100% - var(--img-width));
+}
+
+#credit-card-holder img:nth-child(2) {
+    position: relative;
+    top: calc(-1 *  (var(--img-width) / 447 )* 245 / 2);
+}
+
+#img-overlay {
+    position: absolute;
+    width: var(--img-width);
+    height: calc((var(--img-width) / 447 )* 245);
+    top: calc((var(--img-width) / 447 )* 245 / 2);
+    z-index: 2;
+}
+
+#img-overlay > p {
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    letter-spacing: 1px;
+    border: 1px solid red;
+    width: 100%;
+    margin: 0;
+}
+
+#img-overlay img {
+    transform: scale(var(--scaling-factor));
+    margin: 10px 0;
+}
+
+#cardname-holder {
+    display: flex;
+    justify-content: space-between;
+}
+
+#cardname-holder p {
+    font-size: 0.5rem;
+    color: white;
+    background-color: red;
 }
 
 form {
@@ -61,6 +121,15 @@ form label {
     text-transform: uppercase;
     color: var(--vdv);
     letter-spacing: 1px;
+}
+
+.error-message {
+    font-size: 12px;
+    color: var(--err-col)
+}
+
+.invisible {
+    display: none;
 }
 
 #expdate-cvc-container {
