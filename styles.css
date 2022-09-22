@@ -59,17 +59,21 @@ main {
 }
 
 #credit-card-holder img {
-    max-width: var(--img-width)
+    max-width: var(--img-width);
 }
 
 #credit-card-holder img:first-child {
     position: relative;
     left: calc(100% - var(--img-width));
+    box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.4);
+    border-radius: 10px;
 }
 
 #credit-card-holder img:nth-child(2) {
     position: relative;
     top: calc(-1 *  (var(--img-width) / 447 )* 245 / 2);
+    box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.4);
+    border-radius: 10px;
 }
 
 #cvc-overlay  {
