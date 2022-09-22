@@ -24,60 +24,67 @@
       <div id="credit-card-holder">
         <img src="images/bg-card-back.png">
         <img src="images/bg-card-front.png">
+        <div id="cvc-overlay">
+          <p id="card-img-cvc"> 000 </p>
+        </div>
         <div id="img-overlay">
-          <img src="/images/card-logo.svg" >
-          <p>0000 0000 0000 0000</p>
-          <div>
-            <p> Firstname Lastname</p>
-            <p> MM/YY</p> 
+          <img id="card-logo" src="/images/card-logo.svg" >
+          <p id="card-img-number">0000 0000 0000 0000</p>
+          <div id="cardname-holder">
+            <p id="card-img-name"> Firstname Lastname</p>
+            <p><span id="card-img-mm">MM</span><span>/</span><span id="card-img-yy">YY</span></p> 
           </div>
         </div>
       </div> 
-      <form>
-        <label for="cardholder">Cardholder name:</label><br>
-        <input type="text" id="cardholder" name="cardholder" placeholder="e.g. Jane Appleseed"><br>
+      <form id="form" onsubmit="submitForm() ;return false">
+        <label for="cardholder">Cardholder name:</label> <br>
+        <input type="text" id="cardholder" name="cardholder" placeholder="e.g. Jane Appleseed" required onkeydown="return /[a-zA-Z\s]/i.test(event.key)" onchange="writeToCreditCard(event)"> <br>
         <p class="invisible error-message"> This is a tooltip describing the error.</p>
-        <label for="cardnumber">Card number;</label><br>
-        <input type="text" id="cardnumber" name="cardnumber" placeholder="e.g. 1234 5678 9123 0000"><br>
+        <label for="cardnumber">Card number;</label> <br>
+        <input type="tel" pattern="[0-9]*" id="cardnumber" name="cardnumber" placeholder="e.g. 1234 5678 9123 0000" required minlength="16" maxlength="16" onkeydown="this.value=this.value.slice(0,this.maxLength-1)" onchange="writeToCreditCard(event)"> <br>
         <p class="invisible error-message"> This is a tooltip describing the error.</p>
         <div id="expdate-cvc-container">
           <div id="expdate-container">
-            <label for="expdate">Exp. date (MM/YY)</label><br>
+            <label for="expdate">Exp. date (MM/YY)</label> <br>
             <div>
-              <input type="text" id="expdate-mm" name="expdate" placeholder="MM"><br>   
-              <input type="text" id="expdate-yy" name="expdate" placeholder="YY">
+              <input type="tel" pattern="[0-9]*" id="expdate-mm" name="expdate" placeholder="MM"   required minlength="2" maxlength="2" onchange="writeToCreditCard(event)"> <br>   
+              <input type="tel" pattern="[0-9]*" id="expdate-yy" name="expdate" placeholder="YY"  required minlength="2" maxlength="2" onkeydown="this.value=this.value.slice(0,this.maxLength-1)" onchange="writeToCreditCard(event)">
             </div>
          <p class="invisible error-message"> This is a tooltip describing the error.</p>
           </div>
           <div id="cvc-container">
             <label for="cvc">CVC</label><br>
-            <input type="text" id="cvc" name="cvc" placeholder="e.g. 123">
+            <input type="tel" pattern="[0-9]*" id="cvc" name="cvc" placeholder="e.g. 123" required minlength="3" maxlength="3" onkeydown="this.value=this.value.slice(0,this.maxLength-1)" onchange="writeToCreditCard(event)">
             <p class="invisible error-message"> This is a tooltip describing the error.</p>
           </div>
-      </div>
+        </div>
+        <div class="button-container">
+          <input type="submit" value="Confirm" id="submit-button" class="cc-button"/>
+        </div>
       </form> 
+      <div id="success-form" class="invisible">
+        <img src="/images/icon-complete.svg">
+        <p id="thank-you"> Thank you! </p>
+        <p> We've added your card details</p>
+        <div class="button-container">
+          <input value="Continue" class="cc-button"/>
+        </div>
 
-      
-      0000 0000 0000 0000
-      Jane Appleseed
-      00/00
-      000
-
-      Confirm
-
+      </div>
     </div>
   </main>
 
 
   <!-- Completed state start -->
 
-  Thank you!
-  We've added your card details
   Continue
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Lucas Löser</a>.
   </div>
+
+  <script src="/stuff.js"></script>
+
 </body>
 </html>

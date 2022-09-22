@@ -10,10 +10,10 @@
     --err-col: hsl(360, 90%, 47%);
     --linGrad: linear-gradient(hsl(249, 99%, 64%), hsl(278, 94%, 30%));
 
-    --border_rad: 5px;
+    --border_rad: 10px;
 
-    --img-width: 250px;
-    --scaling-factor: calc(250/447);
+    --img-width: 270px;
+    --scaling-factor: calc( 270 / 447); /* this is a UNITLESS definition --> needs to be changed as well when --img-width changed */
 }
 
 body {
@@ -44,6 +44,7 @@ main {
     width: 100%;
     height: calc( (var(--img-width) / 447) * 245 * 1.5 + 20px);
     max-width: calc(1.5 * var(--img-width));
+    margin: auto;
 }
 
 #credit-card-holder img {
@@ -60,6 +61,16 @@ main {
     top: calc(-1 *  (var(--img-width) / 447 )* 245 / 2);
 }
 
+#cvc-overlay  {
+    position: absolute;
+    top: 0;
+    left: calc(100% - 0.2 * var(--img-width));
+    top:  calc(0.67 *  var(--scaling-factor) * 245px / 2);
+    color: white;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
 #img-overlay {
     position: absolute;
     width: var(--img-width);
@@ -71,11 +82,10 @@ main {
 #img-overlay > p {
     color: white;
     font-size: 1rem;
-    text-align: center;
+    text-align: left;
     letter-spacing: 1px;
-    border: 1px solid red;
-    width: 100%;
-    margin: 0;
+    width: calc(100% - 2rem);
+    margin: 0 1rem;
 }
 
 #img-overlay img {
@@ -86,22 +96,24 @@ main {
 #cardname-holder {
     display: flex;
     justify-content: space-between;
+    margin: 0;
 }
 
 #cardname-holder p {
-    font-size: 0.5rem;
+    margin: 0;
+    font-size: 0.7rem;
     color: white;
-    background-color: red;
+    margin: 1.5rem 1rem 0 1rem;
 }
 
-form {
-    border: 1px solid red;
+form , #success-form{
     width: 100%;
     max-width: 340px;
+    margin: 50px auto;
 }
 
-form input {
-    height: 40px;
+form input:not(input[type=submit]) {
+    height: 50px;
     border: 1px solid var(--lv);
     border-radius: var(--border_rad);
     padding: 0 15px;
@@ -110,10 +122,16 @@ form input {
     font-family: 'Space Grotesk';
     box-sizing: border-box;
     width: 100%;
+    z-index: 3;
 }
 
 form input::placeholder {
     color: var(--lv);
+}
+
+form input:focus {
+    outline: none;
+    border: 2px solid var(--vdv) !important;
 }
 
 form label {
@@ -152,7 +170,6 @@ form label {
 
 #cvc-container #cvc {
     box-sizing: border-box;
-
 }
 
 #expdate-container #expdate-mm, #expdate-yy {
@@ -160,3 +177,135 @@ form label {
     margin-right: 10px;
 }
 
+.button-container {
+    text-align: center;
+}
+
+.cc-button{
+    width: 100%;
+    height: 50px;
+    background-color: var(--vdv);
+    margin-top: 20px;
+    color: white;
+    border: none;
+    border-radius: var(--border_rad);
+    font-family: 'Space Grotesk';
+    font-size: 1rem;
+    text-align: center;
+}
+
+
+#success-form {
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#success-form img {
+    width: 100px;
+    height: auto;
+    margin: 0 auto;
+}
+
+#thank-you  {
+    color: var(--vdv);
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+
+@media only screen and (min-width: 1300px) {
+
+    :root { 
+        --img-width: 447px;
+    }
+
+    main {
+      display: flex;
+    }
+
+    #purple-container {
+        width: 30vw;
+        height: 100vh;
+    }
+
+    #white-container {
+        position: relative;
+        display: flex;
+        margin: auto;
+        top: 0;
+        width: 70vw;
+    }
+
+    #credit-card-holder {
+        left: calc(-0.8 * var(--img-width));
+        margin: auto 0;
+        height: 550px;
+    }
+
+    #credit-card-holder img:nth-child(1)  {
+        position: absolute;
+        top: 300px;
+        left: calc(0.5 * var(--img-width));
+    }
+
+    #credit-card-holder img:nth-child(2)  {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    form , #success-form{
+        position: absolute;
+        left: calc(var(--img-width));
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 400px;
+        padding: 100px 0;
+        max-width: unset;
+    }
+
+    #cvc-overlay  {
+        position: absolute;
+        top: 390px;
+        left: 585px;
+        color: white;
+        letter-spacing: 1px;
+        font-size: 1.2rem;
+    }
+
+    #img-overlay {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 0;
+        height: 245px;
+    }
+
+    #img-overlay > img {
+        position: absolute;
+        margin-top: -280px;
+        margin-left: calc(-0.5 * var(--img-width) + 20px);
+        transform: unset;
+    }
+
+    #img-overlay > p {
+        position: absolute;
+        top: 150px;
+        font-size: 1.6rem;
+        letter-spacing: 5px;
+    }
+
+    #cardname-holder {
+        position: absolute;
+        top: 180px;
+        width: 100%;
+    }
+
+    #cardname-holder p {
+        font-size: 1.2rem;
+    }
+ 
+  }
