@@ -27,6 +27,16 @@ main {
     margin: 0;
 }
 
+.attribution {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
 #purple-container {
     content: url(./images/bg-main-mobile.png);
     width: 100%;
